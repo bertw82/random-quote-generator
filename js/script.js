@@ -10,7 +10,7 @@ project 1 - A Random Quote Generator
 /*** 
  * `quotes` array 
 ***/
-const quotes = [
+const quotes = [ // array of quotes
   {
     quote: 'I don\'t believe that grief passes away. It has its time and place forever. More time is added to it; it becomes a story within a story.',
     source: 'Wendell Berry',
@@ -69,7 +69,7 @@ const quotes = [
     tags: [
       'courage',
       'war',
-      'fearless'
+      'fearlessness'
     ]
   },
   {
@@ -90,7 +90,7 @@ const quotes = [
     year: '2003',
     tags: [
       'life',
-      'essential'
+      'question'
     ]
   },
   {
@@ -99,7 +99,7 @@ const quotes = [
     citation: 'The Road Not Taken',
     year: '1916',
     tags: [
-      'fearless',
+      'courage',
       'life',
       'road'
     ]
@@ -110,7 +110,7 @@ const quotes = [
     citation: 'Master and Commander: The Far Side of the World',
     year: '2003',
     tags: [
-      'pun',
+      'humor',
       'war',
     ]
   }
@@ -120,15 +120,15 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
-getRandomQuote = () => {
+getRandomQuote = () => { // get random quote from quotes array
   const randomNumber = Math.floor(Math.random() * quotes.length);
   return quotes[randomNumber];
-}
+};
 
 /***
  * `printQuote` function
 ***/
-printQuote = () => {
+printQuote = () => { // print random quote to page
   const quoteObj = getRandomQuote();
   // add quote and source
   let quoteHTML = `
@@ -139,7 +139,7 @@ printQuote = () => {
     quoteHTML = quoteHTML + `<span class="citation">${quoteObj.citation}</span>`;
   }
   if (quoteObj.year) { // if there is a year then add that to html
-    quoteHTML = quoteHTML + `<span class="year">${quoteObj.year}</span>`
+    quoteHTML = quoteHTML + `<span class="year">${quoteObj.year}</span>`;
   }
   quoteHTML = quoteHTML + `</p>`;
   let tagsDiv = `<div class="tags-div">`;
@@ -151,13 +151,13 @@ printQuote = () => {
   quoteHTML = quoteHTML + tagsDiv;
   const quoteBox = document.getElementById('quote-box');
   quoteBox.innerHTML = quoteHTML;
-}
+};
 
 /***
  * `randomColor` function
 ***/
 
-randomColorPicker = () => {
+randomColorPicker = () => { // change background color of quotes
   const colors = [
     'dodgerblue',
     'purple',
@@ -172,13 +172,26 @@ randomColorPicker = () => {
   ];
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
   const body = document.querySelector('body');
-  return body.style.backgroundColor = randomColor;
-}
+  body.style.backgroundColor = randomColor;
+};
+
+/***
+ * `slideShow` function
+***/
+
+slideShow = () => { // refresh quotes at regular intervals
+  setInterval(printQuote, 20000);
+  setInterval(randomColorPicker, 20000);
+};
+
+slideShow();
 
 /***
  * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
 document.getElementById('load-quote').addEventListener("click", randomColorPicker, false);
+
+
+
