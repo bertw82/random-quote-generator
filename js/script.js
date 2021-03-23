@@ -12,17 +12,6 @@ project 1 - A Random Quote Generator
 ***/
 const quotes = [
   {
-    quote: 'I come into the peace of wild things who do not tax their lives with forethought of grief.',
-    source: 'Wendell Berry',
-    citation: 'New Collected Poems',
-    year: '2012',
-    tags: [
-      'peace',
-      'wilderness',
-      'escape'
-    ]
-  },
-  {
     quote: 'I don\'t believe that grief passes away. It has its time and place forever. More time is added to it; it becomes a story within a story. But grief and griever alike endure.',
     source: 'Wendell Berry',
     citation: 'Jayber Crow',
@@ -51,18 +40,18 @@ const quotes = [
     tags: [
       'hope',
       'love',
-      'sadness'
+      'consolation'
     ]
   },
   {
-    quote: 'So we beat on, boats against the current, borne back ceaselessly into the past.',
-    source: 'F. Scott Fitzgerald',
-    citation: 'The Great Gatsby',
-    year: '1925',
+    quote: '"Police work wouldn\'t be possible without coffee," Wallander said. "No work would be possible without coffee." They pondered the importance of coffee in silence.',
+    source: 'Henning Mankell',
+    citation: 'One Step Behind',
+    year: '1997',
     tags: [
-      'Jazz era',
-      '1920\'s',
-      'hope'
+      'coffee',
+      'crime',
+      'work'
     ]
   },
   {
@@ -77,10 +66,56 @@ const quotes = [
     ]
   },
   {
-    quote: ,
-    source: ,
-    citation: ,
-    year: 
+    quote: 'Fix bayonets!',
+    source: 'Joshua Lawrence Chamberlain',
+    year: '1863',
+    tags: [
+      'courage',
+      'war',
+      'fearless'
+    ]
+  },
+  {
+    quote: 'It is only with the heart that one can see rightly; what is essential is invisible to the eye.',
+    source: 'Antoine de Saint-Exupery',
+    citation: 'The Little Prince',
+    year: '1943',
+    tags: [
+      'love',
+      'heart',
+      'essential'
+    ]
+  },
+  {
+    quote: 'This is your life, are you who you want to be?',
+    source: 'Switchfoot',
+    citation: 'The Beautiful Letdown',
+    year: '2003',
+    tags: [
+      'life',
+      'essential'
+    ]
+  },
+  {
+    quote: 'Two roads diverged in a wood, and I--I took the one less traveled by, And that has made all the difference.',
+    source: 'Robert Frost',
+    citation: 'The Road Not Taken',
+    year: '1916',
+    tags: [
+      'fearless',
+      'life',
+      'road'
+    ]
+  },
+  {
+    quote: 'One must always choose the lesser of two weevils',
+    source: 'Captain Jack Aubrey',
+    citation: 'Master and Commander: The Far Side of the World',
+    year: '2003',
+    tags: [
+      'joke',
+      'war',
+    ]
   }
 ];
 
