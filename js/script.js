@@ -7,6 +7,8 @@ project 1 - A Random Quote Generator
   // Check the "Project Resources" section of the project instructions
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
+"use strict";
+
 /*** 
  * `quotes` array 
 ***/
@@ -120,7 +122,8 @@ const quotes = [ // array of quotes
 /***
  * `getRandomQuote` function
 ***/
-getRandomQuote = () => { // get random quote from quotes array
+
+const getRandomQuote = () => { // get random quote from quotes array
   const randomNumber = Math.floor(Math.random() * quotes.length);
   return quotes[randomNumber];
 };
@@ -128,7 +131,8 @@ getRandomQuote = () => { // get random quote from quotes array
 /***
  * `printQuote` function
 ***/
-printQuote = () => { // print random quote to page
+
+const printQuote = () => { // print random quote to page
   const quoteObj = getRandomQuote();
   // add quote and source
   let quoteHTML = `
@@ -151,13 +155,14 @@ printQuote = () => { // print random quote to page
   quoteHTML = quoteHTML + tagsDiv;
   const quoteBox = document.getElementById('quote-box');
   quoteBox.innerHTML = quoteHTML;
+  randomColorPicker();
 };
 
 /***
  * `randomColor` function
 ***/
 
-randomColorPicker = () => { // change background color of quotes
+const randomColorPicker = () => { // change background color of quotes
   const colors = [
     'dodgerblue',
     'purple',
@@ -179,19 +184,26 @@ randomColorPicker = () => { // change background color of quotes
  * `slideShow` function
 ***/
 
-slideShow = () => { // refresh quotes at regular intervals
-  setInterval(printQuote, 20000);
-  setInterval(randomColorPicker, 20000);
+let interval;
+
+const startSlideShow = () => { // refresh quotes at regular intervals
+  interval = setInterval(printQuote, 10000);
 };
 
-slideShow();
+const endSlideShow = () => { // end refresh
+  clearInterval(interval);
+}
+
+startSlideShow();
 
 /***
  * click event listener for the print quote button
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
-document.getElementById('load-quote').addEventListener("click", randomColorPicker, false);
+document.getElementById('load-quote').addEventListener("click", endSlideShow, false);
+document.getElementById('load-quote').addEventListener("click", startSlideShow, false);
+
 
 
 
