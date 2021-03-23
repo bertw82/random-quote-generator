@@ -12,7 +12,7 @@ project 1 - A Random Quote Generator
 ***/
 const quotes = [
   {
-    quote: 'I don\'t believe that grief passes away. It has its time and place forever. More time is added to it; it becomes a story within a story. But grief and griever alike endure.',
+    quote: 'I don\'t believe that grief passes away. It has its time and place forever. More time is added to it; it becomes a story within a story.',
     source: 'Wendell Berry',
     citation: 'Jayber Crow',
     year: '2000',
@@ -44,14 +44,11 @@ const quotes = [
     ]
   },
   {
-    quote: '"Police work wouldn\'t be possible without coffee," Wallander said. "No work would be possible without coffee." They pondered the importance of coffee in silence.',
-    source: 'Henning Mankell',
-    citation: 'One Step Behind',
-    year: '1997',
+    quote: 'I start in the middle of a sentence and move both directions at once.',
+    source: 'John Coltrane',
     tags: [
-      'coffee',
-      'crime',
-      'work'
+      'music',
+      'jazz'
     ]
   },
   {
@@ -113,7 +110,7 @@ const quotes = [
     citation: 'Master and Commander: The Far Side of the World',
     year: '2003',
     tags: [
-      'joke',
+      'pun',
       'war',
     ]
   }
@@ -123,14 +120,60 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
-
-
+getRandomQuote = () => {
+  const randomNumber = Math.floor(Math.random() * quotes.length);
+  return quotes[randomNumber];
+}
 
 /***
  * `printQuote` function
 ***/
+printQuote = () => {
+  const quoteObj = getRandomQuote();
+  // add quote and source
+  let quoteHTML = `
+  <p class="quote">${quoteObj.quote}</p>
+  <p class="source">${quoteObj.source}
+  `;
+  if (quoteObj.citation) { // if there is a citation then add that to html
+    quoteHTML = quoteHTML + `<span class="citation">${quoteObj.citation}</span>`;
+  }
+  if (quoteObj.year) { // if there is a year then add that to html
+    quoteHTML = quoteHTML + `<span class="year">${quoteObj.year}</span>`
+  }
+  quoteHTML = quoteHTML + `</p>`;
+  let tagsDiv = `<div class="tags-div">`;
+  const tagsArray = quoteObj.tags;
+  for (let i = 0; i < tagsArray.length; i++) {
+    tagsDiv = tagsDiv + `<span class="tags">#${tagsArray[i]}</span>`;
+  }
+  tagsDiv = tagsDiv + `</div>`;
+  quoteHTML = quoteHTML + tagsDiv;
+  const quoteBox = document.getElementById('quote-box');
+  quoteBox.innerHTML = quoteHTML;
+}
 
+/***
+ * `randomColor` function
+***/
 
+randomColorPicker = () => {
+  const colors = [
+    'dodgerblue',
+    'purple',
+    'red',
+    'forestgreen',
+    'coral',
+    'royalblue',
+    'orange',
+    'plum',
+    'rgb(58, 193, 98)',
+    'teal'
+  ];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  const body = document.querySelector('body');
+  return body.style.backgroundColor = randomColor;
+}
 
 /***
  * click event listener for the print quote button
@@ -138,3 +181,4 @@ const quotes = [
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", randomColorPicker, false);
