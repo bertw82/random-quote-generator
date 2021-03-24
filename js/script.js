@@ -132,7 +132,7 @@ const getRandomQuote = () => { // get random quote from quotes array
  * `printQuote` function
 ***/
 
-const printQuote = () => { // print random quote to page
+function printQuote() { // print random quote to page
   const quoteObj = getRandomQuote();
   // add quote and source
   let quoteHTML = `
@@ -162,7 +162,7 @@ const printQuote = () => { // print random quote to page
  * `randomColor` function
 ***/
 
-const randomColorPicker = () => { // change background color of quotes
+function randomColorPicker() { // change background color of quotes
   const colors = [
     'dodgerblue',
     'purple',
@@ -173,7 +173,10 @@ const randomColorPicker = () => { // change background color of quotes
     'orange',
     'plum',
     'rgb(58, 193, 98)',
-    'teal'
+    'teal',
+    'lightblue',
+    'slategrey',
+    'peru'
   ];
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
   const body = document.querySelector('body');
@@ -186,11 +189,11 @@ const randomColorPicker = () => { // change background color of quotes
 
 let interval;
 
-const startSlideShow = () => { // refresh quotes at regular intervals
+function startSlideShow() { // refresh quotes at regular intervals
   interval = setInterval(printQuote, 10000);
 };
 
-const endSlideShow = () => { // end refresh
+function endSlideShow() { // end refresh
   clearInterval(interval);
 }
 
