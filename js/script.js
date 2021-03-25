@@ -121,31 +121,34 @@ const quotes = [ // array of quotes
 
 /***
  * `getRandomQuote` function
+ * get random quote from quotes array
 ***/
 
-const getRandomQuote = () => { // get random quote from quotes array
+const getRandomQuote = () => { 
   const randomNumber = Math.floor(Math.random() * quotes.length);
   return quotes[randomNumber];
 };
 
 /***
  * `printQuote` function
+ * print random quote to page
+ * if there is a citation and year also add those
 ***/
 
-function printQuote() { // print random quote to page
+function printQuote() { 
   const quoteObj = getRandomQuote();
   // add quote and source
   let quoteHTML = `
   <p class="quote">${quoteObj.quote}</p>
   <p class="source">${quoteObj.source}
   `;
-  if (quoteObj.citation) { // if there is a citation then add that to html
-    quoteHTML = quoteHTML + `<span class="citation">${quoteObj.citation}</span>`;
+  if (quoteObj.citation) { 
+    quoteHTML += `<span class="citation">${quoteObj.citation}</span>`;
   }
-  if (quoteObj.year) { // if there is a year then add that to html
-    quoteHTML = quoteHTML + `<span class="year">${quoteObj.year}</span>`;
+  if (quoteObj.year) { 
+    quoteHTML += `<span class="year">${quoteObj.year}</span>`;
   }
-  quoteHTML = quoteHTML + `</p>`;
+  quoteHTML += `</p>`;
   let tagsDiv = `<div class="tags-div">`;
   const tagsArray = quoteObj.tags;
   for (let i = 0; i < tagsArray.length; i++) {
@@ -156,27 +159,31 @@ function printQuote() { // print random quote to page
   const quoteBox = document.getElementById('quote-box');
   quoteBox.innerHTML = quoteHTML;
   randomColorPicker();
+  endSlideShow();
+  startSlideShow();
 };
 
 /***
  * `randomColor` function
+ * change background color of quotes with specific colors in an array
 ***/
 
-function randomColorPicker() { // change background color of quotes
-  const colors = [
-    'dodgerblue',
-    'purple',
-    'red',
-    'forestgreen',
-    'coral',
-    'royalblue',
-    'orange',
-    'plum',
-    'rgb(58, 193, 98)',
-    'teal',
-    'lightblue',
-    'slategrey',
-    'peru'
+function randomColorPicker() { 
+  const colors = [ // some colors from https://clrs.cc/
+    '#bfbfbf',
+    '#e6c700',
+    '#004080',
+    '#00e663',
+    '#4dccff',
+    '#0074d9',
+    '#39cccc',
+    '#3d9970',
+    '#2ecc40',
+    '#ff4136',
+    '#85144b',
+    '#b10dc9',
+    '#f012be',
+    '#8c8c8c'
   ];
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
   const body = document.querySelector('body');
@@ -185,15 +192,17 @@ function randomColorPicker() { // change background color of quotes
 
 /***
  * `slideShow` function
+ * refresh quotes at regular intervals
+ * end refresh with clearInterval
 ***/
 
 let interval;
 
-function startSlideShow() { // refresh quotes at regular intervals
+function startSlideShow() { 
   interval = setInterval(printQuote, 10000);
 };
 
-function endSlideShow() { // end refresh
+function endSlideShow() { 
   clearInterval(interval);
 }
 
@@ -204,8 +213,6 @@ startSlideShow();
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
-document.getElementById('load-quote').addEventListener("click", endSlideShow, false);
-document.getElementById('load-quote').addEventListener("click", startSlideShow, false);
 
 
 
