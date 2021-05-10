@@ -169,25 +169,10 @@ function printQuote() {
 ***/
 
 function randomColorPicker() { 
-  const colors = [ // some colors from https://clrs.cc/
-    '#bfbfbf',
-    '#e6c700',
-    '#004080',
-    '#00e663',
-    '#4dccff',
-    '#0074d9',
-    '#39cccc',
-    '#3d9970',
-    '#2ecc40',
-    '#ff4136',
-    '#85144b',
-    '#b10dc9',
-    '#f012be',
-    '#8c8c8c'
-  ];
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  // random color snippet from https://css-tricks.com/snippets/javascript/random-hex-color/
+  const randomColor = Math.floor(Math.random()*16777215).toString(16);
   const body = document.querySelector('body');
-  body.style.backgroundColor = randomColor;
+  body.style.backgroundColor = `#${randomColor}`;
 };
 
 /***
